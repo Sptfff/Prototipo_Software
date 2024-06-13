@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mapa Interactivo</title>
+    <style>
+      #map {
+        position: relative;
+        width: 2560px;
+        height: 1829px;
+        background: url('images/Mapa-de-Valparaíso-2020_page-0001-1-scaled.jpg') no-repeat;
+      }
+      .punto {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        border-radius: 50%;
+      }
+      .info {
+        display: none;
+        position: absolute;
+        width: 200px;
+        height: 100px;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 10px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Mapa Interactivo</h3>
+    <div id="map">
+      <div class="punto" style="top: 100px; left: 100px;" onclick="showInfo(this)">
+        <div class="info">sjahdfkajhfa</div>
+      </div>
+      <div class="punto" style="top: 400px; left: 600px;" onclick="showInfo(this)">
+        <div class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. A omnis expedita debitis ipsa. Deserunt fugit ex nesciunt dolores debitis vitae, quae minus sapiente cumque facere officia id consequatur numquam error?</div>
+      </div>
+      <!-- Agrega más puntos según sea necesario -->
+    </div>
+    <script>
+      function showInfo(punto) {
+        var info = punto.querySelector('.info');
+        info.style.display = 'block';
+      }
+    </script>
+  </body>
+</html>
