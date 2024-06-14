@@ -5,44 +5,46 @@
     <style>
       #map {
         position: relative;
-        width: 2560px;
-        height: 1829px;
-        background: url('images/Mapa-de-Valparaíso-2020_page-0001-1-scaled.jpg') no-repeat;
-      }
-      .punto {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background-color: red;
-        border-radius: 50%;
-      }
-      .info {
-        display: none;
-        position: absolute;
-        width: 200px;
-        height: 100px;
-        background-color: rgba(255, 255, 255, 0.8);
-        padding: 10px;
-        border-radius: 5px;
+        width: 100%;
+        height: 500px;
       }
     </style>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="css/bubble.css">
+    <link rel="stylesheet" href="css/header.css">
   </head>
   <body>
-    <h3>Mapa Interactivo</h3>
-    <div id="map">
-      <div class="punto" style="top: 100px; left: 100px;" onclick="showInfo(this)">
-        <div class="info">sjahdfkajhfa</div>
-      </div>
-      <div class="punto" style="top: 400px; left: 600px;" onclick="showInfo(this)">
-        <div class="info">Lorem ipsum dolor sit amet consectetur adipisicing elit. A omnis expedita debitis ipsa. Deserunt fugit ex nesciunt dolores debitis vitae, quae minus sapiente cumque facere officia id consequatur numquam error?</div>
-      </div>
-      <!-- Agrega más puntos según sea necesario -->
-    </div>
+    <header>
+      <!--NAVEGADOR-->
+      <nav>
+          <!--LOGO APP-->
+          <img style="width: 15%; margin-left: -12%; margin-top: -5%;" 
+              src="images/ViajaPo (2).png" alt="Logo proyecto">
+          <ul>
+              <li><a href="#">Inicio</a></li>
+              <li><a href="#">Buscar Alimentos</a></li>
+              <li><a href="#">Mi cuenta</a></li>
+              <li><a href="#">Iniciar sesion<a></li>
+              <li><a href="#">Sobre Nosotros</a></li>
+          </ul>
+      </nav>
+    </header>
+    <div id="map"></div>
     <script>
-      function showInfo(punto) {
-        var info = punto.querySelector('.info');
-        info.style.display = 'block';
-      }
+      mapboxgl.accessToken = 'pk.eyJ1IjoibWF0aWFzLXIiLCJhIjoiY2x4ZTI0bzFpMGNsbDJscHMzZHNscDhjNiJ9.JmfsFnp7FTSG6YzQvc-zWg';
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-71.627251, -33.045846], // Coordenadas de Valparaíso
+        zoom: 13
+      });
+      map.on('click', function(e) {
+        new mapboxgl.Popup()
+          .setLngLat(e.lngLat)
+          .setHTML('Información del lugar')
+          .addTo(map);
+      });
     </script>
   </body>
 </html>
