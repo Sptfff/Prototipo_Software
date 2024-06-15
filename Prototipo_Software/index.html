@@ -23,7 +23,7 @@
               src="images/ViajaPo (2).png" alt="Logo proyecto">
           <ul>
               <li><a href="#">Inicio</a></li>
-              <li><a href="#">Buscar Alimentos</a></li>
+              <li><a href="#">Buscar</a></li>
               <li><a href="#">Mi cuenta</a></li>
               <li><a href="#">Iniciar sesion<a></li>
               <li><a href="#">Sobre Nosotros</a></li>
@@ -37,7 +37,9 @@
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [-71.627251, -33.045846], // Coordenadas de Valparaíso
-        zoom: 13
+        zoom: 13,
+        maxBounds: [[-71.7, -33.1],[-71.5, -33.0] ] // Límite noreste
+        
       });
       map.on('click', function(e) {
         new mapboxgl.Popup()
@@ -45,6 +47,10 @@
           .setHTML('Información del lugar')
           .addTo(map);
       });
+
+      new mapboxgl.Marker()
+        .setLngLat([-33.047228, -71.610849])
+        .addTo(map);
     </script>
   </body>
 </html>
