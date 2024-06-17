@@ -1,0 +1,15 @@
+.popup-content h1 {
+    color: blue;
+    font-size: 16px;
+  }
+  
+  .popup-content p {
+    color: grey;
+    font-size: 12px;
+  }
+  
+.mapboxgl-popup {
+    background-color: yellow; /* Color de fondo para destacar */
+    z-index: 9999; /* Asegura que esté al frente */
+}
+  

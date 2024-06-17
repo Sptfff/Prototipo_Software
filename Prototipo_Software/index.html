@@ -9,12 +9,13 @@
         height: 500px;
       }
     </style>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
-    <link rel="stylesheet" href="css/bubble.css">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.5.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.5.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/globo_info.css">
   </head>
   <body>
+
     <header>
       <!--NAVEGADOR-->
       <nav>
@@ -29,28 +30,13 @@
               <li><a href="#">Sobre Nosotros</a></li>
           </ul>
       </nav>
+
+
     </header>
     <div id="map"></div>
-    <script>
-      mapboxgl.accessToken = 'pk.eyJ1IjoibWF0aWFzLXIiLCJhIjoiY2x4ZTI0bzFpMGNsbDJscHMzZHNscDhjNiJ9.JmfsFnp7FTSG6YzQvc-zWg';
-      var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-71.627251, -33.045846], // Coordenadas de Valparaíso
-        zoom: 13,
-        maxBounds: [[-71.7, -33.1],[-71.5, -33.0] ] // Límite noreste
-        
-      });
-      map.on('click', function(e) {
-        new mapboxgl.Popup()
-          .setLngLat(e.lngLat)
-          .setHTML('Información del lugar')
-          .addTo(map);
-      });
-
-      new mapboxgl.Marker()
-        .setLngLat([-33.047228, -71.610849])
-        .addTo(map);
-    </script>
+    
+    <script src="code/map.js"></script>
+    
+ 
   </body>
 </html>
