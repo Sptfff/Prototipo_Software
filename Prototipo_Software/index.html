@@ -13,6 +13,8 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="css/bubble.css">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/aside.css">
+    <link rel="stylesheet" href="css/mapa.css">
   </head>
   <body>
     <header>
@@ -30,8 +32,32 @@
           </ul>
       </nav>
     </header>
-    <div id="map"></div>
-    <script>
+    <div class="container">
+      <div id="map"></div>
+      
+      <aside>
+        <h2>Lugares tendencia</h2>
+        <ul>
+          <li>
+            <a href="#">Tierra Amarilla</a>
+            <p> - 3 completos (3 reseñas)</p>
+          </li>
+          <li>
+            <a href="#">Til Til</a>
+            <p> - 2.82 completos (21 reseñas)</p>
+          </li>
+          <li>
+            <a href="#">Curico</a>
+            <p> - 3 completos (1 reseÑas)</p>
+          </li>
+          <li>
+            <a href="#">Caleta Portales</a>
+            <p> - 1 completos (312.341 reseÑas)</p>
+          </li>
+        </ul>
+      </aside>
+    </div>
+    <script class="mapita">
       mapboxgl.accessToken = 'pk.eyJ1IjoibWF0aWFzLXIiLCJhIjoiY2x4ZTI0bzFpMGNsbDJscHMzZHNscDhjNiJ9.JmfsFnp7FTSG6YzQvc-zWg';
       var map = new mapboxgl.Map({
         container: 'map',
@@ -44,7 +70,7 @@
       map.on('click', function(e) {
         new mapboxgl.Popup()
           .setLngLat(e.lngLat)
-          .setHTML('Información del lugar')
+          .setHTML('Información del lugar xd')
           .addTo(map);
       });
 

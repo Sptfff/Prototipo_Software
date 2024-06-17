@@ -1,0 +1,9 @@
+.container{
+    display: flex;
+    background-color: aliceblue;
+}
+#map{
+    display: flex;
+    border: solid 10px black;
+    width: 500px;
+}

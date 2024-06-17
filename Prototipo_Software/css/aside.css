@@ -1,0 +1,7 @@
+aside{
+    margin-right: 0;
+    width: 300px;
+    padding: 30px;
+    box-sizing: border-box;
+    border: solid 1px black;
+}
