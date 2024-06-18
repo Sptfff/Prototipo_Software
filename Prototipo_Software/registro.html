@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mapa Interactivo</title>
+        <style>
+          #map {
+            position: relative;
+            width: 100%;
+            height: 500px;
+          }
+        </style>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+        <link rel="stylesheet" href="css/bubble.css">
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/aside.css">
+        <link rel="stylesheet" href="css/mapa.css">
+      </head>
+
+      <header>
+        <!--NAVEGADOR-->
+        <nav>
+            <!--LOGO APP-->
+            <img style="width: 15%; margin-left: -12%; margin-top: -5%;" 
+                src="images/ViajaPo (2).png" alt="Logo proyecto">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Buscar</a></li>
+                <li><a href="#">Mi cuenta</a></li>
+                <li><a href="#">Iniciar sesion<a></li>
+                <li><a href="#">Sobre Nosotros</a></li>
+            </ul>
+        </nav>
+      </header>
+      
+    <body>
+    
+
+    <!-- FORMULARIO DE REGISTRO -->
+    <form id="registroForm">
+        <ul>
+            <li><input type="text" id="nombre" placeholder="Nombre" required></li>
+            <li><input type="email" id="email" placeholder="Email" required></li>
+            <li><input type="password" id="password" placeholder="Contraseña" required></li>
+            <button type="submit">Registrarse</button>
+        </ul>
+    </form>
+
+    <script>
+        document.getElementById('registroForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Crear un objeto con los datos del formulario
+            var datosUsuario = {
+                nombre: document.getElementById('nombre').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+            
+            // Convertir los datos del usuario a JSON y guardarlos en localStorage
+            localStorage.setItem('usuario', JSON.stringify(datosUsuario));
+            
+            // Redirigir al usuario al index.html
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
