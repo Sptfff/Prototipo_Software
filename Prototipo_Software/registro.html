@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mapa Interactivo</title>
+        <style>
+          #map {
+            position: relative;
+            width: 100%;
+            height: 500px;
+          }
+        </style>
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+        <link rel="stylesheet" href="css/bubble.css">
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/aside.css">
+        <link rel="stylesheet" href="css/mapa.css">
+        <link rel="stylesheet" href="css/style.css">
+      </head>
+
+      <header>
+        <!--NAVEGADOR-->
+        <nav>
+            <!--LOGO APP-->
+            <img style="width: 15%; margin-left: -12%; margin-top: -5%;" 
+                src="images/ViajaPo (2).png" alt="Logo proyecto">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+              <li><a href="#">Buscar</a></li>
+              <li><a href="registro.html">Crear cuenta</a></li>
+              <li><a href="login.html">Iniciar sesion<a></li>
+              <li><a href="#">Sobre Nosotros</a></li>
+            </ul>
+        </nav>
+      </header>
+      
+    <body>
+    
+
+    <!-- FORMULARIO DE REGISTRO -->
+    <form id="Form" style="max-width: 300px; margin: auto;">
+        <h1>Creación de cuenta</h1>
+        <h3>Por favor ingrese sus datos:</h3>
+        <br>
+    
+        <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;">
+                <input type="text" id="nombre" placeholder="Nombre" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </li>
+            <li style="margin-bottom: 10px;">
+                <input type="email" id="email" placeholder="Email" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </li>
+            <li style="margin-bottom: 10px;">
+                <input type="password" id="password" placeholder="Contraseña" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </li>
+            <li>
+                <button type="submit" style="width: 100%; padding: 10px; border-radius: 5px; background-color: #007bff; color: white; border: none;">Registrarse</button>
+            </li>
+        </ul>
+    </form>
+    
+
+    <script>
+        document.getElementById('Form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Crear un objeto con los datos del formulario
+            var datosUsuario = {
+                nombre: document.getElementById('nombre').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+            
+            // Convertir los datos del usuario a JSON y guardarlos en localStorage
+            localStorage.setItem('usuario', JSON.stringify(datosUsuario));
+            
+            alert("Registro exitoso");
+            // Redirigir al usuario al index.html
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
