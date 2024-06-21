@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/aside.css">
         <link rel="stylesheet" href="css/mapa.css">
+        <link rel="stylesheet" href="css/style.css">
       </head>
 
       <header>
@@ -24,27 +25,40 @@
             <img style="width: 15%; margin-left: -12%; margin-top: -5%;" 
                 src="images/ViajaPo (2).png" alt="Logo proyecto">
             <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Buscar</a></li>
-                <li><a href="#">Mi cuenta</a></li>
-                <li><a href="#">Iniciar sesion<a></li>
-                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a href="index.html">Inicio</a></li>
+              <li><a href="#">Buscar</a></li>
+              <li><a href="registro.html">Crear cuenta</a></li>
+              <li><a href="login.html">Iniciar sesion<a></li>
+              <li><a href="#">Sobre Nosotros</a></li>
             </ul>
         </nav>
+
+
       </header>
 <body>
     
 
-    <form id="loginForm">
-        <ul>
-            <li><input type="email" id="loginEmail" placeholder="Email" required></li>
-            <li><input type="password" id="loginPassword" placeholder="Contraseña" required></li>
-            <li><button type="submit">Iniciar Sesión</button></li>
+    <form id="Form" style="max-width: 300px; margin: auto;">
+        <h1>Inicio de sesión</h1>
+        <h3>Por favor ingrese sus datos:</h3>
+        <br>
+    
+        <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;">
+                <input type="email" id="loginEmail" placeholder="Email" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </li>
+            <li style="margin-bottom: 10px;">
+                <input type="password" id="loginPassword" placeholder="Contraseña" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+            </li>
+            <li>
+                <button type="submit" style="width: 100%; padding: 10px; border-radius: 5px; background-color: #007bff; color: white; border: none;">Iniciar Sesión</button>
+            </li>
         </ul>
     </form>
+    
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
+        document.getElementById('Form').addEventListener('submit', function(event) {
             event.preventDefault();
             
             // Obtener los datos del usuario de localStorage
