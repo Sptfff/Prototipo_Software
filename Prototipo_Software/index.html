@@ -35,6 +35,26 @@
     <div class="container">
       <div id="map"></div>
       
+      <div id="region-buttons">
+        <button onclick="flyToRegion('Arica')">Arica y Parinacota</button><br>
+        <button onclick="flyToRegion('Tarapaca')">Tarapacá</button><br>
+        <button onclick="flyToRegion('Antofagasta')">Antofagasta</button><br>
+        <button onclick="flyToRegion('Atacama')">Atacama</button><br>
+        <button onclick="flyToRegion('Coquimbo')">Coquimbo</button><br>
+        <button onclick="flyToRegion('Valparaiso')">Valparaíso</button><br>
+        <button onclick="flyToRegion('Metropolitana')">Región Metropolitana</button><br>
+        <button onclick="flyToRegion('OHiggins')">O'Higgins</button><br>
+        <button onclick="flyToRegion('Maule')">Maule</button><br>
+        <button onclick="flyToRegion('Nuble')">Ñuble</button><br>
+        <button onclick="flyToRegion('Biobio')">Biobío</button><br>
+        <button onclick="flyToRegion('Araucania')">Araucanía</button><br>
+        <button onclick="flyToRegion('LosRios')">Los Ríos</button><br>
+        <button onclick="flyToRegion('LosLagos')">Los Lagos</button><br>
+        <button onclick="flyToRegion('Aysen')">Aysén</button><br>
+        <button onclick="flyToRegion('Magallanes')">Magallanes</button><br>
+    </div>
+    
+
       <aside>
         <h2>Lugares tendencia</h2>
         <ul>
@@ -57,6 +77,10 @@
         </ul>
       </aside>
     </div>
+
+    
+
+
     <script class="mapita">
       mapboxgl.accessToken = 'pk.eyJ1IjoibWF0aWFzLXIiLCJhIjoiY2x4ZTI0bzFpMGNsbDJscHMzZHNscDhjNiJ9.JmfsFnp7FTSG6YzQvc-zWg';
       var map = new mapboxgl.Map({
@@ -64,7 +88,7 @@
         style: 'mapbox://styles/mapbox/streets-v11',
         center: [-71.627251, -33.045846], // Coordenadas de Valparaíso
         zoom: 13,
-        maxBounds: [[-71.7, -33.1],[-71.5, -33.0] ] // Límite noreste
+        //maxBounds: [[-71.7, -33.1],[-71.5, -33.0] ] // Límite noreste
         
       });
       map.on('click', function(e) {
@@ -78,5 +102,35 @@
         .setLngLat([-33.047228, -71.610849])
         .addTo(map);
     </script>
+
+<script>
+  var regionCoords = {
+    'Arica': [-70.312599, -18.478253],
+    'Tarapaca': [-69.347392, -20.251284],
+    'Antofagasta': [-69.814222, -23.652361],
+    'Atacama': [-70.133300, -27.366790],
+    'Coquimbo': [-71.252013, -29.953302],
+    'Valparaiso': [-71.627251, -33.045846],
+    'Metropolitana': [-70.648270, -33.456940],
+    'OHiggins': [-71.363962, -34.575490],
+    'Maule': [-71.657266, -35.426400],
+    'Nuble': [-72.104003, -36.617676],
+    'Biobio': [-72.106203, -37.471183],
+    'Araucania': [-72.590374, -38.948921],
+    'LosRios': [-72.633333, -39.800000],
+    'LosLagos': [-72.828472, -41.471700],
+    'Aysen': [-72.666500, -45.400000],
+    'Magallanes': [-70.917068, -53.163833]
+};
+
+  function flyToRegion(regionName) {
+      var coords = regionCoords[regionName];
+      map.flyTo({
+          center: coords,
+          essential: true 
+      });
+  }
+
+</script>
   </body>
 </html>
