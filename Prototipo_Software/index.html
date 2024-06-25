@@ -1,41 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>Mapa Interactivo</title>
-    <style>
-      #map {
-        position: relative;
-        width: 100%;
-        height: 500px;
-      }
-    </style>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/bubble.css">
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/aside.css">
     <link rel="stylesheet" href="css/mapa.css">
+    <link href="code/map.js">
+    
   </head>
   <body>
     <header>
-      <!--NAVEGADOR-->
       <nav>
-          <!--LOGO APP-->
-          <img style="width: 15%; margin-left: -12%; margin-top: -5%;" 
-              src="images/ViajaPo (2).png" alt="Logo proyecto">
-          <ul>
-              <li><a href="index.html">Inicio</a></li>
-              <li><a href="#">Buscar</a></li>
-              <li><a href="registro.html">Crear cuenta</a></li>
-              <li><a href="login.html">Iniciar sesion<a></li>
-              <li><a href="#">Sobre Nosotros</a></li>
-          </ul>
+        <img style="width: 15%; margin-left: -12%; margin-top: -5%;" src="images/ViajaPo (2).png" alt="Logo proyecto">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="#">Buscar</a></li>
+          <li><a href="registro.html">Crear cuenta</a></li>
+          <li><a href="login.html">Iniciar sesión</a></li>
+          <li><a href="#">Sobre Nosotros</a></li>
+        </ul>
       </nav>
     </header>
     <div class="container">
       <div id="map"></div>
       
       <div id="region-buttons">
+        <!-- Botones de regiones -->
         <button onclick="flyToRegion('Arica')">Arica y Parinacota</button><br>
         <button onclick="flyToRegion('Tarapaca')">Tarapacá</button><br>
         <button onclick="flyToRegion('Antofagasta')">Antofagasta</button><br>
@@ -54,10 +48,7 @@
         <button onclick="flyToRegion('Magallanes')">Magallanes</button><br>
         <br><br>
         <button onclick="generarRutaAleatoria('n')">Generar Ruta</button>
-
-    </div>
-    
-
+      </div>
       <aside>
         <h2>Lugares tendencia</h2>
         <ul>
@@ -71,151 +62,16 @@
           </li>
           <li>
             <a href="#">Curico</a>
-            <p> - 3 completos (1 reseÑas)</p>
+            <p> - 3 completos (1 reseñas)</p>
           </li>
           <li>
             <a href="#">Caleta Portales</a>
-            <p> - 1 completos (312.341 reseÑas)</p>
+            <p> - 1 completos (312.341 reseñas)</p>
           </li>
         </ul>
       </aside>
     </div>
-
-    
-
-
-    <script class="mapita">
-      var regionActual = ''; // Variable global para mantener la región actual
-
-      mapboxgl.accessToken = 'pk.eyJ1IjoibWF0aWFzLXIiLCJhIjoiY2x4ZTI0bzFpMGNsbDJscHMzZHNscDhjNiJ9.JmfsFnp7FTSG6YzQvc-zWg';
-      var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-71.627251, -33.045846], // Coordenadas de Valparaíso
-        zoom: 13,
-        //maxBounds: [[-71.7, -33.1],[-71.5, -33.0] ] // Límite noreste
-        
-      });
-      map.on('click', function(e) {
-        new mapboxgl.Popup()
-          .setLngLat(e.lngLat)
-          .setHTML('Información del lugar xd')
-          .addTo(map);
-      });
-
-      new mapboxgl.Marker()
-        .setLngLat([-33.047228, -71.610849])
-        .addTo(map);
-    </script>
-
-<script>
-  var regionCoords = {
-    'Arica': [-70.312599, -18.478253],
-    'Tarapaca': [-69.347392, -20.251284],
-    'Antofagasta': [-69.814222, -23.652361],
-    'Atacama': [-70.133300, -27.366790],
-    'Coquimbo': [-71.252013, -29.953302],
-    'Valparaiso': [-71.627251, -33.045846],
-    'Metropolitana': [-70.648270, -33.456940],
-    'OHiggins': [-71.363962, -34.575490],
-    'Maule': [-71.657266, -35.426400],
-    'Nuble': [-72.104003, -36.617676],
-    'Biobio': [-72.106203, -37.471183],
-    'Araucania': [-72.590374, -38.948921],
-    'LosRios': [-72.633333, -39.800000],
-    'LosLagos': [-72.828472, -41.471700],
-    'Aysen': [-72.666500, -45.400000],
-    'Magallanes': [-70.917068, -53.163833]
-};
-
-function flyToRegion(regionName) {
-    regionActual = regionName; // Actualiza la región actual
-    var coords = regionCoords[regionName];
-    map.flyTo({
-        center: coords,
-        essential: true
-    });
-}
-
-
-function generarRutaAleatoria() {
-    if (!regionActual) {
-        alert('Por favor, selecciona una región primero.');
-        return;
-    }
-
-    // Obtén dos puntos aleatorios para el inicio y el fin de la ruta
-    var inicio = crearCoordenadaAleatoria(regionCoords[regionActual]);
-    var fin = crearCoordenadaAleatoria(regionCoords[regionActual]);
-
-    // Construye la URL para la solicitud a la API de Mapbox Directions
-    var directionsRequest = 'https://api.mapbox.com/directions/v5/mapbox/driving/' +
-        inicio.join(',') + ';' + fin.join(',') +
-        '?geometries=geojson&access_token=' + mapboxgl.accessToken;
-
-    // Realiza la solicitud a la API de Mapbox Directions
-    fetch(directionsRequest)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(json) {
-            // Asegúrate de que la respuesta tiene rutas
-            if (json.routes && json.routes.length) {
-                var ruta = json.routes[0].geometry;
-
-                // Limpia rutas anteriores
-                if (map.getSource('ruta')) {
-                    map.removeLayer('ruta');
-                    map.removeSource('ruta');
-                }
-
-                // Agrega la ruta al mapa
-                map.addSource('ruta', {
-                    'type': 'geojson',
-                    'data': ruta
-                });
-
-                map.addLayer({
-                    'id': 'ruta',
-                    'type': 'line',
-                    'source': 'ruta',
-                    'layout': {
-                        'line-join': 'round',
-                        'line-cap': 'round'
-                    },
-                    'paint': {
-                        'line-color': 'rgb(255, 0, 0)',
-                        'line-width': 6
-                    }
-                });
-
-                // Centra el mapa en la ruta
-                var bounds = new mapboxgl.LngLatBounds();
-                ruta.coordinates.forEach(function(coord) {
-                    bounds.extend(coord);
-                });
-                map.fitBounds(bounds, {
-                    padding: 20
-                });
-            } else {
-                alert('No se pudo obtener una ruta.');
-            }
-        })
-        .catch(function(error) {
-            alert('Error al obtener la ruta: ' + error.message);
-        });
-}
-
-function crearCoordenadaAleatoria(regionCoords) {
-    // Esta función crea una coordenada aleatoria dentro de los límites de la región
-    return [
-        regionCoords[0] + (Math.random() - 0.5) * 0.1, // Longitud
-        regionCoords[1] + (Math.random() - 0.5) * 0.1  // Latitud
-    ];
-}
-
-
-
-</script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+    <script src="code/map.js"></script>
   </body>
 </html>
