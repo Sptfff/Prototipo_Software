@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
     <title>Mapa Interactivo</title>
     <link rel="stylesheet" href="css/styles.css">
@@ -10,50 +10,37 @@
     <link rel="stylesheet" href="css/aside.css">
     <link rel="stylesheet" href="css/mapa.css">
     <link rel="stylesheet" href="css/button.css">
-    <style>body{font-family: "Google Sans",Roboto,Arial,sans-serif;background-color: #FFFFFF;}</style>
-  </head>
-  <body>
-    <header>
-      <nav>
+    <style>
+        body {
+            font-family: "Google Sans", Roboto, Arial, sans-serif;
+            background-color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
         <img style="width: 15%; margin-left: -12%; margin-top: -5%;" src="images/ViajaPo (2).png" alt="Logo proyecto">
         <ul>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="#">Buscar</a></li>
-          <li><a href="registro.html">Crear cuenta</a></li>
-          <li><a href="login.html">Iniciar sesión</a></li>
-          <li><a href="#">Sobre Nosotros</a></li>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="#">Buscar</a></li>
+            <li><a href="registro.html">Crear cuenta</a></li>
+            <li><a href="login.html">Iniciar sesión</a></li>
+            <li><a href="#">Sobre Nosotros</a></li>
         </ul>
-      </nav>
-    </header>
-    <div class="container">
-      <div id="map"></div>
-
-      <!--<button id="showTrendingButton" class="show-aside-button">Mostrar Lugares Tendencia</button>-->
-      <aside>
+    </nav>
+</header>
+<div class="container">
+    <div id="map"></div>
+    <!--<button id="showTrendingButton" class="show-aside-button">Mostrar Lugares Tendencia</button>-->
+    <aside>
         <h2>Lugares tendencia</h2>
-        <ul>
-          <li>
-            <a href="#">Tierra Amarilla</a>
-            <p> - 3 completos (3 reseñas)</p>
-          </li>
-          <li>
-            <a href="#">Til Til</a>
-            <p> - 2.82 completos (21 reseñas)</p>
-          </li>
-          <li>
-            <a href="#">Curico</a>
-            <p> - 3 completos (1 reseñas)</p>
-          </li>
-          <li>
-            <a href="#">Caleta Portales</a>
-            <p> - 1 completos (312.341 reseñas)</p>
-          </li>
-        </ul>
-      </aside>
-      
-    </div>
-    <footer>
-      <div id="region-buttons" style="margin-top: 30px;">
+        <div id="lugares-tendencia"></div>
+    </aside>
+</div>
+<footer>
+    <div id="region-buttons" style="margin-top: 30px;">
         <!-- Botones de regiones -->
         <button class="button-17" onclick="flyToRegion('Arica')">Arica y Parinacota</button><br>
         <button class="button-17" onclick="flyToRegion('Tarapaca')">Tarapacá</button><br>
@@ -73,10 +60,11 @@
         <button class="button-17" onclick="flyToRegion('Magallanes')">Magallanes</button><br>
         <br><br>
         <button class="button-17 large" onclick="generarRutaAleatoria('n')">Generar Ruta</button>
-      </div>
-    </footer>
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
-    <script src="code/interfaz.js"></script>
-    <script src="code/map.js"></script>
-  </body>
+    </div>
+</footer>
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+<script src="code/interfaz.js"></script>
+<script src="code/map.js"></script>
+<script src="code/script.js"></script>
+</body>
 </html>

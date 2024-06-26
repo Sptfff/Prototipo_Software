@@ -1,9 +1,18 @@
 aside{
   position: absolute;
   margin-left: 80.2%;
-  width: 300px;
-  height: 72.7vh;
+  font-size: 2vh;
+  width: 250px;
+  height: 75vh;
   padding: 20px;
   box-sizing: border-box;
-  border: solid 1px black;
+  border: solid 1px white;
+  background-color: rgb(171, 239, 238);
+}
+.buttonTend{
+  background-color: white;
+  width: 200px;
+  margin-top: 10px;
+  color: black;
+  border: 2px solid #a8c2b9; /* Green */
 }

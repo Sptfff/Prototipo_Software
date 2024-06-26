@@ -1,0 +1,184 @@
+{
+    "lugares": [
+        {
+            "title": "Cartagena",
+            "cords": [-71.65, -33.54],
+            "id": "1",
+            "descripcion": "Playa",
+            "valoracion": "2.9",
+            "numValoraciones": "45",
+            "zoom": 15
+        },
+        {
+            "title": "Torres del Paine",
+            "cords": [-73.042527, -51.041233],
+            "id": "2",
+            "descripcion": "Montaña",
+            "valoracion": "3",
+            "numValoraciones": "90",
+            "zoom": 12
+        },
+        {
+            "title": "Lago Rapel",
+            "cords": [-71.496828, -34.160556],
+            "id": "3",
+            "descripcion": "Lago",
+            "valoracion": "2.7",
+            "numValoraciones": "50",
+            "zoom": 13
+        },
+        {
+            "title": "Valle del Elqui",
+            "cords": [-70.711024, -30.000093],
+            "id": "4",
+            "descripcion": "Valle",
+            "valoracion": "2.8",
+            "numValoraciones": "55",
+            "zoom": 12
+        },
+        {
+            "title": "San Pedro de Atacama",
+            "cords": [-68.198074, -22.910883],
+            "id": "5",
+            "descripcion": "Desierto",
+            "valoracion": "2.9",
+            "numValoraciones": "60",
+            "zoom": 13
+        },
+        {
+            "title": "Isla de Pascua",
+            "cords": [-109.349693, -27.112723],
+            "id": "6",
+            "descripcion": "Isla",
+            "valoracion": "2.8",
+            "numValoraciones": "75",
+            "zoom": 12
+        },
+        {
+            "title": "Parque Nacional Vicente Pérez Rosales",
+            "cords": [-72.182965, -41.118195],
+            "id": "7",
+            "descripcion": "Parque Nacional",
+            "valoracion": "2.9",
+            "numValoraciones": "48",
+            "zoom": 2
+        },
+        {
+            "title": "Chiloé",
+            "cords": [-73.773158, -42.640497],
+            "id": "8",
+            "descripcion": "Isla",
+            "valoracion": "2.8",
+            "numValoraciones": "40",
+            "zoom": 12
+        },
+        {
+            "title": "Geysers del Tatio",
+            "cords": [-68.012388, -22.335243],
+            "id": "9",
+            "descripcion": "Geysers",
+            "valoracion": "2.7",
+            "numValoraciones": "35",
+            "zoom": 14
+        },
+        {
+            "title": "Valle de la Luna",
+            "cords": [-68.303064, -22.906846],
+            "id": "10",
+            "descripcion": "Desierto",
+            "valoracion": "2.9",
+            "numValoraciones": "50",
+            "zoom": 13
+        },
+        {
+            "title": "Pucón",
+            "cords": [-71.954145, -39.276799],
+            "id": "11",
+            "descripcion": "Lago y Montaña",
+            "valoracion": "3",
+            "numValoraciones": "65",
+            "zoom": 13
+        },
+        {
+            "title": "Valparaíso",
+            "cords": [-71.612688, -33.047238],
+            "id": "12",
+            "descripcion": "Puerto",
+            "valoracion": "2.7",
+            "numValoraciones": "70",
+            "zoom": 10
+        },
+        {
+            "title": "La Serena",
+            "cords": [-71.252028, -29.902669],
+            "id": "13",
+            "descripcion": "Ciudad Costera",
+            "valoracion": "2.9",
+            "numValoraciones": "55",
+            "zoom": 10
+        },
+        {
+            "title": "Termas de Chillán",
+            "cords": [-71.425881, -36.931389],
+            "id": "14",
+            "descripcion": "Termas",
+            "valoracion": "2.8",
+            "numValoraciones": "30",
+            "zoom": 13
+        },
+        {
+            "title": "Parque Nacional Lauca",
+            "cords": [-69.316799, -18.237354],
+            "id": "15",
+            "descripcion": "Parque Nacional",
+            "valoracion": "2.8",
+            "numValoraciones": "40",
+            "zoom": 12
+        },
+        {
+            "title": "Puerto Varas",
+            "cords": [-72.985379, -41.321993],
+            "id": "16",
+            "descripcion": "Lago",
+            "valoracion": "2.8",
+            "numValoraciones": "55",
+            "zoom": 12
+        },
+        {
+            "title": "Frutillar",
+            "cords": [-73.164672, -41.126769],
+            "id": "17",
+            "descripcion": "Ciudad Costera",
+            "valoracion": "2.7",
+            "numValoraciones": "35",
+            "zoom": 11
+        },
+        {
+            "title": "Rapa Nui",
+            "cords": [-109.349693, -27.112723],
+            "id": "18",
+            "descripcion": "Isla",
+            "valoracion": "2.5",
+            "numValoraciones": "65",
+            "zoom": 12
+        },
+        {
+            "title": "Punta Arenas",
+            "cords": [-70.907785, -53.163833],
+            "id": "19",
+            "descripcion": "Ciudad Costera",
+            "valoracion": "2.9",
+            "numValoraciones": "50",
+            "zoom": 11
+        },
+        {
+            "title": "Río Petrohué",
+            "cords": [-72.349508, -41.113480],
+            "id": "20",
+            "descripcion": "Río",
+            "valoracion": "2.8",
+            "numValoraciones": "45",
+            "zoom": 14
+        }
+    ]
+}

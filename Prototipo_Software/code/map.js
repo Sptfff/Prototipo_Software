@@ -66,6 +66,16 @@ function flyToRegion(regionName) {
     center: coords,
     essential: true
   });
+  console.log(coords)
+}
+function flyToCord(place, zum) {
+  console.log(place);
+  map.flyTo({
+    center: place,
+    essential: true,
+    zoom: 12
+  });
+  
 }
 
 function generarRutaAleatoria() {
@@ -75,3 +85,38 @@ function generarRutaAleatoria() {
 function crearCoordenadaAleatoria(regionCoords) {
   // Función para crear coordenadas aleatorias
 }
+
+function cargarLugares() {
+  fetch('tendencia.json')
+      .then(response => response.json())
+      .then(data => {
+          // Obtener el div donde se mostrarán los lugares
+          const listaLugares = document.getElementById('lugares-tendencia');
+          
+          // Ordenar los lugares por valoración de mayor a menor
+          data.lugares.sort((a, b) => b.valoracion - a.valoracion);
+          
+          // Tomar los 5 primeros lugares con mejor valoración
+          const topLugares = data.lugares.slice(0, 5);
+          
+          // Recorrer los 5 mejores lugares y crear el botón
+          topLugares.forEach(lugar => {
+              const button = document.createElement('button');
+              button.className = 'buttonTend';
+              button.innerHTML = `${lugar.title} </br> 
+                                  ${lugar.valoracion} completos </br> 
+                                  ${lugar.numValoraciones} valoraciones`;
+              button.setAttribute('onclick', `flyToCord([${lugar.cords}], ${lugar.zoom})`);
+              listaLugares.appendChild(button);
+              listaLugares.appendChild(document.createElement('br'));
+          });
+      })
+      .catch(error => console.error('Error al leer el archivo JSON:', error));
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  cargarLugares();
+});
+
+
+  
