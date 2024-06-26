@@ -13,33 +13,33 @@ var map = new mapboxgl.Map({
 map.on('click', function(e) {
   new mapboxgl.Popup()
     .setLngLat(e.lngLat)
-    .setHTML('Información del lugar xd')
+    .setHTML('Mati ql')
     .addTo(map);
 });
 
 new mapboxgl.Marker()
-  .setLngLat([-33.047228, -71.610849])
+  .setLngLat([-71.6197, -33.0458])
   .addTo(map);
 
 // Definición de funciones para interactuar con el mapa y generar rutas aleatorias
 
 var regionCoords = {
     'Arica': [-70.312599, -18.478253],
-    'Tarapaca': [-69.347392, -20.251284],
-    'Antofagasta': [-69.814222, -23.652361],
-    'Atacama': [-70.133300, -27.366790],
-    'Coquimbo': [-71.252013, -29.953302],
-    'Valparaiso': [-71.627251, -33.045846],
-    'Metropolitana': [-70.648270, -33.456940],
-    'OHiggins': [-71.363962, -34.575490],
-    'Maule': [-71.657266, -35.426400],
-    'Nuble': [-72.104003, -36.617676],
-    'Biobio': [-72.106203, -37.471183],
-    'Araucania': [-72.590374, -38.948921],
-    'LosRios': [-72.633333, -39.800000],
-    'LosLagos': [-72.828472, -41.471700],
-    'Aysen': [-72.666500, -45.400000],
-    'Magallanes': [-70.917068, -53.163833]
+    'Tarapaca': [-70.1524, -20.2141],
+    'Antofagasta': [-70.4000, -23.6500],
+    'Atacama': [-70.3333, -27.3667],
+    'Coquimbo': [-71.2540, -29.9078],
+    'Valparaiso': [-71.6197, -33.0458],
+    'Metropolitana': [-70.6483, -33.4569],
+    'OHiggins': [-70.7444, -34.1708],
+    'Maule': [-71.6554, -35.4264],
+    'Nuble': [-72.1034, -36.6066],
+    'Biobio': [-73.0498, -36.8269],
+    'Araucania': [-72.5904, -38.7359],
+    'LosRios': [-73.2459, -39.8196],
+    'LosLagos': [-72.9424, -41.4693],
+    'Aysen': [-72.0683, -45.5712],
+    'Magallanes': [-70.9171, -53.1638]
 };
 
 function flyToRegion(regionName) {
