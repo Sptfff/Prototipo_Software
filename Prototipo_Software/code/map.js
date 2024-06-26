@@ -10,17 +10,34 @@ var map = new mapboxgl.Map({
   zoom: 13
 });
 
-map.on('click', function(e) {
-  new mapboxgl.Popup()
-    .setLngLat(e.lngLat)
-    .setHTML('Mati ql')
-    .addTo(map);
-});
-
 new mapboxgl.Marker()
   .setLngLat([-71.6197, -33.0458])
   .addTo(map);
 
+fetch('json/info.json')
+.then(response => response.json())
+.then(data => {
+  console.log(data);
+  data.forEach(function(place) {
+    var marker = new mapboxgl.Marker()
+      .setLngLat(place.coordinates)
+      .addTo(map);
+  
+    setTimeout(function(){
+      marker.getElement().addEventListener('click', function(e) {
+        console.log('Marcador presionado:', place.title); // Esto debería aparecer en la consola al hacer clic en el marcador
+        console.log(e)
+        new mapboxgl.Popup()
+          .setLngLat(place.coordinates)
+          .setHTML('<div class="popup-content"><h1>' + place.title + '</h1><p>' + place.description + '</p></div>')
+          console.log('se leen')
+          .addTo(map);
+          
+      });
+    },0);
+  });
+  
+});
 // Definición de funciones para interactuar con el mapa y generar rutas aleatorias
 
 var regionCoords = {

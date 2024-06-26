@@ -1,7 +1,9 @@
 aside{
-    margin-right: 0;
-    width: 300px;
-    padding: 30px;
-    box-sizing: border-box;
-    border: solid 1px black;
+  position: absolute;
+  margin-left: 80.2%;
+  width: 300px;
+  height: 72.7vh;
+  padding: 20px;
+  box-sizing: border-box;
+  border: solid 1px black;
 }

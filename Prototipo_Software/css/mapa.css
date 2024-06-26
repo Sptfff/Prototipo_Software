@@ -1,9 +1,14 @@
-.container{
-    display: flex;
-    background-color: aliceblue;
+
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 72.7vh; /* Ajusta el mapa para ocupar toda la altura de la pantalla */
 }
-#map{
-    display: flex;
-    border: solid 10px black;
-    width: 100%;
-}
+
+.container {
+    position: relative; /* Establece la posición relativa para los elementos hijos posicionados absolutamente */
+    height: 75vh; /* Ajusta la altura para ocupar toda la pantalla */
+  }
+

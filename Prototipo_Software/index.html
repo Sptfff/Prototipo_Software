@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/aside.css">
     <link rel="stylesheet" href="css/mapa.css">
-    <link href="code/map.js">
-    
+    <link rel="stylesheet" href="css/button.css">
+    <style>body{font-family: "Google Sans",Roboto,Arial,sans-serif;background-color: #FFFFFF;}</style>
   </head>
   <body>
     <header>
@@ -27,28 +27,8 @@
     </header>
     <div class="container">
       <div id="map"></div>
-      
-      <div id="region-buttons">
-        <!-- Botones de regiones -->
-        <button onclick="flyToRegion('Arica')">Arica y Parinacota</button><br>
-        <button onclick="flyToRegion('Tarapaca')">Tarapacá</button><br>
-        <button onclick="flyToRegion('Antofagasta')">Antofagasta</button><br>
-        <button onclick="flyToRegion('Atacama')">Atacama</button><br>
-        <button onclick="flyToRegion('Coquimbo')">Coquimbo</button><br>
-        <button onclick="flyToRegion('Valparaiso')">Valparaíso</button><br>
-        <button onclick="flyToRegion('Metropolitana')">Región Metropolitana</button><br>
-        <button onclick="flyToRegion('OHiggins')">O'Higgins</button><br>
-        <button onclick="flyToRegion('Maule')">Maule</button><br>
-        <button onclick="flyToRegion('Nuble')">Ñuble</button><br>
-        <button onclick="flyToRegion('Biobio')">Biobío</button><br>
-        <button onclick="flyToRegion('Araucania')">Araucanía</button><br>
-        <button onclick="flyToRegion('LosRios')">Los Ríos</button><br>
-        <button onclick="flyToRegion('LosLagos')">Los Lagos</button><br>
-        <button onclick="flyToRegion('Aysen')">Aysén</button><br>
-        <button onclick="flyToRegion('Magallanes')">Magallanes</button><br>
-        <br><br>
-        <button onclick="generarRutaAleatoria('n')">Generar Ruta</button>
-      </div>
+
+      <!--<button id="showTrendingButton" class="show-aside-button">Mostrar Lugares Tendencia</button>-->
       <aside>
         <h2>Lugares tendencia</h2>
         <ul>
@@ -70,8 +50,33 @@
           </li>
         </ul>
       </aside>
+      
     </div>
+    <footer>
+      <div id="region-buttons" style="margin-top: 30px;">
+        <!-- Botones de regiones -->
+        <button class="button-17" onclick="flyToRegion('Arica')">Arica y Parinacota</button><br>
+        <button class="button-17" onclick="flyToRegion('Tarapaca')">Tarapacá</button><br>
+        <button class="button-17" onclick="flyToRegion('Antofagasta')">Antofagasta</button><br>
+        <button class="button-17" onclick="flyToRegion('Atacama')">Atacama</button><br>
+        <button class="button-17" onclick="flyToRegion('Coquimbo')">Coquimbo</button><br>
+        <button class="button-17" onclick="flyToRegion('Valparaiso')">Valparaíso</button><br>
+        <button class="button-17" onclick="flyToRegion('Metropolitana')">Región Metropolitana</button><br>
+        <button class="button-17" onclick="flyToRegion('OHiggins')">O'Higgins</button><br>
+        <button class="button-17" onclick="flyToRegion('Maule')">Maule</button><br>
+        <button class="button-17" onclick="flyToRegion('Nuble')">Ñuble</button><br>
+        <button class="button-17" onclick="flyToRegion('Biobio')">Biobío</button><br>
+        <button class="button-17" onclick="flyToRegion('Araucania')">Araucanía</button><br>
+        <button class="button-17" onclick="flyToRegion('LosRios')">Los Ríos</button><br>
+        <button class="button-17" onclick="flyToRegion('LosLagos')">Los Lagos</button><br>
+        <button class="button-17" onclick="flyToRegion('Aysen')">Aysén</button><br>
+        <button class="button-17" onclick="flyToRegion('Magallanes')">Magallanes</button><br>
+        <br><br>
+        <button class="button-17 large" onclick="generarRutaAleatoria('n')">Generar Ruta</button>
+      </div>
+    </footer>
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js'></script>
+    <script src="code/interfaz.js"></script>
     <script src="code/map.js"></script>
   </body>
 </html>

@@ -24,3 +24,17 @@ nav ul li a:hover{
     transition: .3s;
     
 }
+
+footer{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+}
+#region-buttons {
+    position: relative;
+    top: -8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
