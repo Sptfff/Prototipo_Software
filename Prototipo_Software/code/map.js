@@ -1,6 +1,6 @@
 // Código JavaScript relacionado con el mapa y la interacción
 
-var regionActual = ''; // Variable global para mantener la región actual
+var regionActual = 'Valparaiso'; // Variable global para mantener la región actual
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibWF0aWFzLXIiLCJhIjoiY2x4ZTI0bzFpMGNsbDJscHMzZHNscDhjNiJ9.JmfsFnp7FTSG6YzQvc-zWg';
 var map = new mapboxgl.Map({
@@ -79,11 +79,78 @@ function flyToCord(place, zum) {
 }
 
 function generarRutaAleatoria() {
-  // Función para generar rutas aleatorias
+  if (!regionActual) {
+    alert('Por favor, selecciona una región primero.');
+    return;
+}
+
+// Obtén dos puntos aleatorios para el inicio y el fin de la ruta
+var inicio = crearCoordenadaAleatoria(regionCoords[regionActual]);
+var fin = crearCoordenadaAleatoria(regionCoords[regionActual]);
+
+// Construye la URL para la solicitud a la API de Mapbox Directions
+var directionsRequest = 'https://api.mapbox.com/directions/v5/mapbox/driving/' +
+    inicio.join(',') + ';' + fin.join(',') +
+    '?geometries=geojson&access_token=' + mapboxgl.accessToken;
+
+// Realiza la solicitud a la API de Mapbox Directions
+fetch(directionsRequest)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(json) {
+        // Asegúrate de que la respuesta tiene rutas
+        if (json.routes && json.routes.length) {
+            var ruta = json.routes[0].geometry;
+
+            // Limpia rutas anteriores
+            if (map.getSource('ruta')) {
+                map.removeLayer('ruta');
+                map.removeSource('ruta');
+            }
+
+            // Agrega la ruta al mapa
+            map.addSource('ruta', {
+                'type': 'geojson',
+                'data': ruta
+            });
+
+            map.addLayer({
+                'id': 'ruta',
+                'type': 'line',
+                'source': 'ruta',
+                'layout': {
+                    'line-join': 'round',
+                    'line-cap': 'round'
+                },
+                'paint': {
+                    'line-color': 'rgb(255, 0, 0)',
+                    'line-width': 6
+                }
+            });
+
+            // Centra el mapa en la ruta
+            var bounds = new mapboxgl.LngLatBounds();
+            ruta.coordinates.forEach(function(coord) {
+                bounds.extend(coord);
+            });
+            map.fitBounds(bounds, {
+                padding: 20
+            });
+        } else {
+            alert('No se pudo obtener una ruta.');
+        }
+    })
+    .catch(function(error) {
+        alert('Error al obtener la ruta: ' + error.message);
+    });
 }
 
 function crearCoordenadaAleatoria(regionCoords) {
-  // Función para crear coordenadas aleatorias
+  return [
+    regionCoords[0] + (Math.random() - 0.5) * 0.1, // Longitud
+    regionCoords[1] + (Math.random() - 0.5) * 0.1  // Latitud
+];
 }
 
 function cargarLugares() {
