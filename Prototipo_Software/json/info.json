@@ -1,0 +1,12 @@
+[
+    {
+      "title": "Lugar 1",
+      "description": "Descripción del Lugar 1",
+      "coordinates": [-71.610849, -33.047228]
+    },
+    {
+      "title": "Lugar 2",
+      "description": "Descripción del Lugar 2",
+      "coordinates": [-71.612345, -33.048765]
+    }
+]
