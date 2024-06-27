@@ -192,8 +192,18 @@ function cargarLugares() {
           topLugares.forEach(lugar => {
               const button = document.createElement('button');
               button.className = 'buttonTend';
+
+              // Redondear el valor de los completos al número entero más cercano
+              const valoracionRedondeada = Math.round(lugar.valoracion);
+              let completosHTML = '';
+
+              // Crear la imagen correspondiente al valor redondeado
+              for (let i = 0; i < valoracionRedondeada; i++) {
+                  completosHTML += '<img style="width: 20%;" src="images/icon_Completo.webp" alt="Completo">';
+              }
+
               button.innerHTML = `${lugar.title} </br> 
-                                  ${lugar.valoracion} completos </br> 
+                                  ${completosHTML} </br> 
                                   ${lugar.numValoraciones} valoraciones`;
               button.setAttribute('onclick', `flyToCord([${lugar.cords}], ${lugar.zoom})`);
               listaLugares.appendChild(button);
