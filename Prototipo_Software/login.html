@@ -63,8 +63,11 @@
             var usuarioGuardado = JSON.parse(localStorage.getItem('usuario'));
             
             // Verificar si el email y la contraseña ingresados coinciden con los almacenados
-            if(usuarioGuardado.email === document.getElementById('loginEmail').value &&
+            if(usuarioGuardado && usuarioGuardado.email === document.getElementById('loginEmail').value &&
                usuarioGuardado.password === document.getElementById('loginPassword').value) {
+                // Establecer una sesión válida (podrías usar sessionStorage o localStorage)
+                localStorage.setItem('sesionValida', 'true');
+                
                 // Redirigir al usuario al index.html si las credenciales son correctas
                 window.location.href = 'index.html';
             } else {
@@ -73,6 +76,7 @@
             }
         });
     </script>
+    
 </body>
 </html>
 
