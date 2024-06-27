@@ -179,6 +179,15 @@
             "valoracion": "2.8",
             "numValoraciones": "45",
             "zoom": 14
+        },
+        {
+            "title": "La Riviera",
+            "cords": [-71.610840,-33.047201],
+            "id": "21",
+            "descripcion": "Comida",
+            "valoracion":"3",
+            "numValoraciones": "19743958",
+            "zoom": 20
         }
     ]
 }

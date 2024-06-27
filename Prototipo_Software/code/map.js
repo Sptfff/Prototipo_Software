@@ -10,34 +10,34 @@ var map = new mapboxgl.Map({
   zoom: 13
 });
 
-new mapboxgl.Marker()
+/*new mapboxgl.Marker()
   .setLngLat([-71.6197, -33.0458])
-  .addTo(map);
+  .addTo(map);*/
 
-fetch('json/info.json')
-.then(response => response.json())
-.then(data => {
-  console.log(data);
-  data.forEach(function(place) {
-    var marker = new mapboxgl.Marker()
-      .setLngLat(place.coordinates)
-      .addTo(map);
+  fetch('json/tendencia.json')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    data.lugares.forEach(function(place) {
+      var marker = new mapboxgl.Marker()
+        .setLngLat(place.cords)
+        .addTo(map);
+        console.log('aaa')
   
-    setTimeout(function(){
-      marker.getElement().addEventListener('click', function(e) {
-        console.log('Marcador presionado:', place.title); // Esto debería aparecer en la consola al hacer clic en el marcador
-        console.log(e)
-        new mapboxgl.Popup()
-          .setLngLat(place.coordinates)
-          .setHTML('<div class="popup-content"><h1>' + place.title + '</h1><p>' + place.description + '</p></div>')
-          console.log('se leen')
-          .addTo(map);
-          
-      });
-    },0);
-  });
-  
-});
+      setTimeout(function(){
+        marker.getElement().addEventListener('click', function(e) {
+          console.log('Marcador presionado:', place.title); // Esto debería aparecer en la consola al hacer clic en el marcador
+          console.log(e);
+          new mapboxgl.Popup()
+            .setLngLat(place.cords)
+            .setHTML('<div class="popup-content"><h1>' + place.title + '</h1><p>' + place.descripcion + '</p></div>')
+            .addTo(map);
+        });
+      }, 0);
+    });
+  })
+  .catch(error => console.error('Error al cargar el JSON:', error));
+
 // Definición de funciones para interactuar con el mapa y generar rutas aleatorias
 
 var regionCoords = {
@@ -84,6 +84,8 @@ function generarRutaAleatoria() {
     return;
 }
 
+
+var markers = [];
 // Obtén dos puntos aleatorios para el inicio y el fin de la ruta
 var inicio = crearCoordenadaAleatoria(regionCoords[regionActual]);
 var fin = crearCoordenadaAleatoria(regionCoords[regionActual]);
@@ -95,55 +97,72 @@ var directionsRequest = 'https://api.mapbox.com/directions/v5/mapbox/driving/' +
 
 // Realiza la solicitud a la API de Mapbox Directions
 fetch(directionsRequest)
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(json) {
-        // Asegúrate de que la respuesta tiene rutas
-        if (json.routes && json.routes.length) {
-            var ruta = json.routes[0].geometry;
+      .then(function(response) {
+          return response.json();
+      })
+      .then(function(json) {
+          // Asegúrate de que la respuesta tiene rutas
+          if (json.routes && json.routes.length) {
+              var ruta = json.routes[0].geometry;
 
-            // Limpia rutas anteriores
-            if (map.getSource('ruta')) {
-                map.removeLayer('ruta');
-                map.removeSource('ruta');
-            }
+              // Limpia rutas anteriores
+              if (map.getSource('ruta')) {
+                  map.removeLayer('ruta');
+                  map.removeSource('ruta');
+              }
 
-            // Agrega la ruta al mapa
-            map.addSource('ruta', {
-                'type': 'geojson',
-                'data': ruta
-            });
+              // Agrega la ruta al mapa
+              map.addSource('ruta', {
+                  'type': 'geojson',
+                  'data': ruta
+              });
 
-            map.addLayer({
-                'id': 'ruta',
-                'type': 'line',
-                'source': 'ruta',
-                'layout': {
-                    'line-join': 'round',
-                    'line-cap': 'round'
-                },
-                'paint': {
-                    'line-color': 'rgb(255, 0, 0)',
-                    'line-width': 6
-                }
-            });
+              map.addLayer({
+                  'id': 'ruta',
+                  'type': 'line',
+                  'source': 'ruta',
+                  'layout': {
+                      'line-join': 'round',
+                      'line-cap': 'round'
+                  },
+                  'paint': {
+                      'line-color': 'rgb(255, 0, 0)',
+                      'line-width': 6
+                  }
+              });
 
-            // Centra el mapa en la ruta
-            var bounds = new mapboxgl.LngLatBounds();
-            ruta.coordinates.forEach(function(coord) {
-                bounds.extend(coord);
-            });
-            map.fitBounds(bounds, {
-                padding: 20
-            });
-        } else {
-            alert('No se pudo obtener una ruta.');
-        }
-    })
-    .catch(function(error) {
-        alert('Error al obtener la ruta: ' + error.message);
-    });
+              // Centra el mapa en la ruta
+              var bounds = new mapboxgl.LngLatBounds();
+              ruta.coordinates.forEach(function(coord) {
+                  bounds.extend(coord);
+              });
+              map.fitBounds(bounds, {
+                  padding: 20
+              });
+
+              console.log(markers)
+              // Elimina marcadores anteriores si existen
+              markers.forEach(marker => marker.remove());
+              markers = [];
+              console.log(markers+"despues de borrar")
+
+              // Añade marcadores al inicio y al fin de la ruta
+              var inicioMarker = new mapboxgl.Marker({ color: 'green' })
+                  .setLngLat(inicio)
+                  .addTo(map);
+              markers.push(inicioMarker);
+
+              var finMarker = new mapboxgl.Marker({ color: 'red' })
+                  .setLngLat(fin)
+                  .addTo(map);
+              markers.push(finMarker);
+          } else {
+              alert('No se pudo obtener una ruta.');
+          }
+      })
+      .catch(function(error) {
+          alert('Error al obtener la ruta: ' + error.message);
+      });
 }
 
 function crearCoordenadaAleatoria(regionCoords) {
@@ -154,7 +173,7 @@ function crearCoordenadaAleatoria(regionCoords) {
 }
 
 function cargarLugares() {
-  fetch('tendencia.json')
+  fetch('json/tendencia.json')
       .then(response => response.json())
       .then(data => {
           // Obtener el div donde se mostrarán los lugares
