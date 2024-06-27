@@ -73,7 +73,7 @@ function flyToCord(place, zum) {
   map.flyTo({
     center: place,
     essential: true,
-    zoom: 12
+    zoom: zum
   });
   
 }
